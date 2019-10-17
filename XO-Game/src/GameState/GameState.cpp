@@ -65,6 +65,7 @@ private:
 	}
 
 public:
+	//start the game.
 	void startGame()
 	{
 		cout <<"welcome" << playerX->getName() << " and " << playerY->getName() << endl;
@@ -82,7 +83,13 @@ public:
 			makePlayerMove(playerY);
 			if (gameState != GameConstants::gameState::gameInProgress) break;
 		}
+		
 		//game has ended display the final result
+		gameBoard->displayBoard();
 		displayGameResult();
+
+		//change the state of players as game ended
+		playerX->setPlayerState(GameConstants::playerState::Idle);
+		playerY->setPlayerState(GameConstants::playerState::Idle);
 	}
 };
