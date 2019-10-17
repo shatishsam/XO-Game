@@ -49,7 +49,7 @@ public:
 	{
 		//check for error conditions
 		if (!isValidIndex(i, j)) { throwError(GameConstants::invalidSquareErrorMessage); return false; } //check if the indexes are valid
-		if (!isMovePossible(i, j)) { throwError(GameConstants::occupiedSquareErrorMessage); return false; } //check if square is not occupied
+		if (!isMovePossible(i, j)) {throwError(GameConstants::occupiedSquareErrorMessage); return false; } //check if square is not occupied
 
 		//the move is valid. based on the player set the value
 		if (isPlayerX) this->Board[i][j] = GameConstants::playerXMoveValue;

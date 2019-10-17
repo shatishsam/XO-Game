@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include "../GameConstants/GameConstants.cpp"
 
@@ -37,18 +38,15 @@ public:
 	{
 		int scoreValue = (isPlayerX ? 1 : -1);
 		
-		rowScores[i]++; columnScores[j]++; //update rowscore and columnscore
-		if (i == j) leftDiagonalScore++; //update left diagonal score 
-		if (i + j == 2) rightDiagonalScore++; //update right diagonal score
+		rowScores[i] += scoreValue; columnScores[j] += scoreValue; //update rowscore and columnscore
+		if (i == j) leftDiagonalScore += scoreValue; //update left diagonal score 
+		if (i + j == 2) rightDiagonalScore += scoreValue; //update right diagonal score
 		movesCount++; //update the no of moves played
 	}
 
 	//check if someone has won
 	GameConstants::gameState getCurrentGameState()
 	{
-		//check if the game is draw. if move count is 9
-		if (movesCount == 9) return GameConstants::gameState::gameDraw;
-
 		//check the diagonals first as its easy to calculate
 		if (leftDiagonalScore == 3 || rightDiagonalScore == 3) return GameConstants::gameState::playerXVictory;
 		if (leftDiagonalScore == -3 || rightDiagonalScore == -3) return GameConstants::gameState::playerYVictory;
@@ -59,9 +57,23 @@ public:
 			if (rowScores[i] == 3 || columnScores[i] == 3) return GameConstants::gameState::playerXVictory;
 			if (rowScores[i] == -3 || columnScores[i] == -3) return GameConstants::gameState::playerYVictory;
 		}
+		//check if the game is draw. if move count is 9
+		if (movesCount == 9) return GameConstants::gameState::gameDraw;
 
 		//no one has won the game so return game in progress
 		return GameConstants::gameState::gameInProgress;
 	}
 
+	//temp function to display the scores
+	void displayScores()
+	{
+		std::cout << "displaying the board scores" << std::endl;
+		for (int i = 0; i < 3; i++)
+		{
+			std::cout << i << " row score is" << rowScores[i] << std::endl;
+			std::cout << i << " column score is" << columnScores[i] << std::endl;
+		}
+		std::cout << "left diagonal score is" << leftDiagonalScore << std::endl;
+		std::cout << "right diagona score is" << rightDiagonalScore << std::endl;
+	}
 };

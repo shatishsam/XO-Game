@@ -22,6 +22,49 @@ public:
 		this->gameState = GameConstants::gameState::gameInProgress; //game state
 	}
 
+private:
+	//
+	void displayGameResult()
+	{
+		switch (gameState)
+		{
+		
+			case GameConstants::gameState::playerXVictory:
+			{
+				cout << playerX->getName() << " has won the game" << endl;
+				break;
+			}
+
+			case GameConstants::gameState::playerYVictory:
+			{
+				cout << playerY->getName() << " has won the game" << endl;
+				break;
+			}
+
+			case GameConstants::gameState::gameDraw:
+			{
+				cout << "Game Drawn" << endl;
+				break;
+			}
+		}
+	}
+
+	//make the given player update the board
+	void makePlayerMove(GamePlayer* gamePlayer)
+	{
+		//display the board to the user
+		cout << "Current Board is" << endl;
+		gameBoard->displayBoard();
+
+		//get the move user wants to make
+		int i, j;
+		cout << gamePlayer->getName() << " Please enter your move in indexes" << endl;
+		cin >> i >> j;
+		if (!gameBoard->tryMakeMove(i, j, gamePlayer == playerX)) makePlayerMove(gamePlayer); //recursively call and make player move until he makes a valid move
+		else this->gameState = this->gameBoard->getCurrentGameState(); //valid move so update the game state
+	}
+
+public:
 	void startGame()
 	{
 		cout <<"welcome" << playerX->getName() << " and " << playerY->getName() << endl;
@@ -29,27 +72,17 @@ public:
 		playerX->setPlayerState(GameConstants::playerState::In_Game);
 		playerY->setPlayerState(GameConstants::playerState::In_Game);
 
-		int i, j; //temp variables to get the index from the user
-		while (gameState == GameConstants::gameState::gameInProgress)
+		while (true)
 		{
-			//display the board to the user
-			cout << "Current Board is" << endl;
-			gameBoard->displayBoard();
-			
-			//get the move user wants to make
-			cout << "Player1 Please enter your move in indexes" << endl;
-			cin >> i >> j;
-			while (gameBoard->tryMakeMove(i, j, true)); //try until both users makes a valid move
+			//playerX move and update the gamestate
+			makePlayerMove(playerX);
+			if (gameState != GameConstants::gameState::gameInProgress) break;
 
-			//get the move user wants to make
-			cout << "Player1 Please enter your move in indexes" << endl;
-			cin >> i >> j;
-			while (gameBoard->tryMakeMove(i, j, false));
-
-			//update the new gamestate
-			this->gameState = this->gameBoard->getCurrentGameState();
+			//playerY move and update the gamestate
+			makePlayerMove(playerY);
+			if (gameState != GameConstants::gameState::gameInProgress) break;
 		}
-
-		cout << "game has ended the result is" << this->gameState << endl;
+		//game has ended display the final result
+		displayGameResult();
 	}
 };
