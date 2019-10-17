@@ -15,7 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="XO-Game\src\Source.cpp">
+    <ClCompile Include="XO-Game\src\GamePlayer\GamePlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GamePlayer\Person.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GameConstants\GameConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GameBoard\GameBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GameBoard\GameScoreHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GameState\GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XO-Game\src\GameTester\GameTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

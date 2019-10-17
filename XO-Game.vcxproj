@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XO-Game\src\GameBoard\GameBoard.cpp" />
+    <ClCompile Include="XO-Game\src\GameBoard\GameScoreHelper.cpp" />
+    <ClCompile Include="XO-Game\src\GameConstants\GameConstants.cpp" />
+    <ClCompile Include="XO-Game\src\GamePlayer\GamePlayer.cpp" />
+    <ClCompile Include="XO-Game\src\GamePlayer\Person.cpp" />
+    <ClCompile Include="XO-Game\src\GameState\GameState.cpp" />
+    <ClCompile Include="XO-Game\src\GameTester\GameTester.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EC3F8E28-FD13-44F2-9B05-07F9FE1C5C5A}</ProjectGuid>
@@ -122,9 +131,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="XO-Game\src\Source.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -16,4 +16,10 @@ public:
 		this->playerState = GameConstants::playerState::Idle;
 	}
 
+public:
+	//get the current player state
+	GameConstants::playerState getPlayerState() { return this->playerState; }
+
+	//set the player state
+	void setPlayerState(GameConstants::playerState newPlayerState) { this->playerState = newPlayerState; }
 };

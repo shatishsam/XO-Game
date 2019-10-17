@@ -5,16 +5,16 @@ class GameConstants
 {
 public:
 	// player state
-	static const enum playerState
+	const enum playerState
 	{
 		Idle, In_Game
 	};
+
 	//game state
-	static const enum gameState
+	const enum gameState
 	{
-		Initialized, InProgress, Ended
+		gameInProgress, playerXVictory, playerYVictory, gameDraw
 	};
-	
 
 	//value for playerX moves
 	static const int playerXMoveValue = 1;
@@ -23,7 +23,7 @@ public:
 
 
 	/*** ErrorMessages ***/
-	static std::string occupiedSquareErrorMessage = "Square Already Occupied Try Other Square"; //aready occupied
+	static constexpr const char* occupiedSquareErrorMessage = "Square Already Occupied Try Other Square"; //aready occupied
 
-	static std::string invalidSquareErrorMessage="Invalid Square Provided Please Enter Correct Square"; // invalid index
+	static constexpr const char* invalidSquareErrorMessage="Invalid Square Provided Please Enter Correct Square"; // invalid index
 };
